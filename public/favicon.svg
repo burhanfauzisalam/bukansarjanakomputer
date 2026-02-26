@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="BSK Favicon">
+  <defs>
+    <linearGradient id="bg" x1="10" y1="10" x2="118" y2="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f314d"/>
+      <stop offset="1" stop-color="#061526"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="31" y1="31" x2="97" y2="97" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#09b8a5"/>
+      <stop offset="1" stop-color="#ff6f3d"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#bg)"/>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="none" stroke="#2f536f" stroke-width="2"/>
+  <circle cx="64" cy="64" r="34" fill="#081a2d" stroke="url(#ring)" stroke-width="3"/>
+  <path d="M49 46 L35 64 L49 82" fill="none" stroke="#09b8a5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M79 46 L93 64 L79 82" fill="none" stroke="#09b8a5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="64" cy="64" r="6" fill="#ff6f3d"/>
+  <rect x="58" y="31" width="12" height="4" rx="2" fill="#09b8a5"/>
+  <rect x="58" y="93" width="12" height="4" rx="2" fill="#09b8a5"/>
+</svg>

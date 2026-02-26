@@ -1,0 +1,49 @@
+services:
+  app:
+    build:
+      # Build context dapat dioverride lewat BUILD_CONTEXT.
+      # Pada flow CD, nilainya di-set ke folder deploy di server.
+      context: ${BUILD_CONTEXT:-.}
+      dockerfile: Dockerfile
+    image: ${APP_NAME}
+    container_name: ${APP_NAME}
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost/ >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+    env_file:
+      - .env
+
+    networks:
+      - web
+
+    # Persist uploaded files in a folder under RUN_DIR (where this
+    # docker-compose.yml lives), so deploy/rebuild tidak menghapus data.
+    volumes:
+      - ./storage/app/public:/var/www/html/storage/app/public
+
+    labels:
+      - "traefik.enable=true"
+
+      # ROUTER (host utama + alias www)
+      - "traefik.http.routers.${APP_NAME}.rule=Host(`${APP_URL_BASE}`) || Host(`${APP_URL_WWW}`)"
+      - "traefik.http.routers.${APP_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${APP_NAME}.tls.certresolver=myresolver"
+      - "traefik.http.routers.${APP_NAME}.priority=100"
+
+      # MIDDLEWARE
+      - "traefik.http.middlewares.${APP_NAME}-proxy.headers.customrequestheaders.X-Forwarded-Proto=https"
+      # - "traefik.http.middlewares.${APP_NAME}-proxy.headers.customrequestheaders.X-Forwarded-Host=${APP_URL_BASE}"
+
+      - "traefik.http.routers.${APP_NAME}.middlewares=${APP_NAME}-proxy"
+
+      # SERVICE
+      - "traefik.http.services.${APP_NAME}.loadbalancer.server.port=80"
+
+networks:
+  web:
+    external: true
