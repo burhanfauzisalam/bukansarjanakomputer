@@ -8,6 +8,24 @@ use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
+    public function latest()
+    {
+        $article = Article::query()
+            ->latest('published_at')
+            ->latest('id')
+            ->first();
+
+        if (! $article) {
+            return response()->json([
+                'message' => 'No articles found.',
+            ], 404);
+        }
+
+        return response()->json([
+            'data' => $article,
+        ], 200);
+    }
+
     public function index()
     {
         $articles = Article::query()
