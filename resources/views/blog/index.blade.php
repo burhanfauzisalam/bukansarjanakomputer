@@ -63,6 +63,9 @@
               <img src="{{ asset($article->image) }}" alt="{{ $article->title }}" />
               <div class="card-body">
                 <span class="meta">{{ $article->published_at?->translatedFormat('d M Y') }}</span>
+                @if(!empty($article->category))
+                  <span class="meta">Kategori: {{ $article->category }}</span>
+                @endif
                 <h2>{{ $article->title }}</h2>
                 <p>{{ $article->excerpt }}</p>
                 <div class="card-footer">

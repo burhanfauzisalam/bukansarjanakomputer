@@ -33,6 +33,7 @@ jobs:
           DB_USERNAME: ${{ vars.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           APP_KEY: ${{ secrets.APP_KEY }}
+          API_SECRET_KEY: ${{ secrets.API_SECRET_KEY }}
         run: |
           set -euo pipefail
           if [ -z "${APP_NAME:-}" ]; then
@@ -96,6 +97,7 @@ jobs:
           DB_USERNAME="$DB_USERNAME"
           DB_PASSWORD="$DB_PASSWORD"
           APP_KEY_FROM_SECRET="$APP_KEY"
+          API_SECRET_KEY_FROM_SECRET="$API_SECRET_KEY"
 
           REMOTE_DIR="\$HOME/apps/deploy/\$APP_NAME"
           RUN_DIR="\$HOME/apps/\$APP_NAME"
@@ -136,6 +138,7 @@ jobs:
             echo "APP_URL_BASE=\$APP_URL_BASE"
             echo "APP_URL_WWW=\$APP_URL_WWW"
             echo "APP_KEY=\$FINAL_APP_KEY"
+            echo "API_SECRET_KEY=\$API_SECRET_KEY_FROM_SECRET"
 
             echo "LOG_CHANNEL=stack"
             echo "LOG_LEVEL=info"

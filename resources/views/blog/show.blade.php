@@ -24,7 +24,12 @@
     h1 { font-size:clamp(1.9rem, 5vw, 2.8rem); line-height:1.15; margin:.35rem 0 .6rem; }
     .meta { color:#bfdbfe; font-size:.92rem; }
     .lead { color:var(--muted); line-height:1.7; margin-top:.8rem; }
-    .content p { color:var(--muted); line-height:1.8; margin: 0 0 1rem; }
+    .article-html { color:var(--muted); line-height:1.8; }
+    .article-html p { color:var(--muted); line-height:1.8; margin: 0 0 1rem; }
+    .article-html h2, .article-html h3, .article-html h4 { color:var(--text); margin:1rem 0 .5rem; }
+    .article-html ul, .article-html ol { padding-left:1.2rem; margin:0 0 1rem; }
+    .article-html img { max-width:100%; border-radius:14px; margin:.5rem 0; }
+    .article-html a { color:var(--accent); text-decoration:underline; }
     .back-link { display:inline-flex; align-items:center; gap:.4rem; margin-top:1rem; color:var(--accent); font-weight:600; }
     .sidebar { position:sticky; top:88px; display:grid; gap:1rem; }
     .sidebar-card { background:linear-gradient(180deg, rgba(15,23,42,.94), rgba(15,23,42,.86)); border:1px solid rgba(148,163,184,.18); border-radius:24px; padding:1rem; box-shadow:0 18px 40px rgba(8,15,30,.35); }
@@ -52,7 +57,7 @@
           <h2>{{ $article->title }}</h2>
           <p class="meta">Dipublikasikan {{ $article->published_at?->translatedFormat('d M Y') }}</p>
           <p class="lead">{{ $article->excerpt }}</p>
-          <div>{!! nl2br(e($article->content)) !!}</div>
+          <div class="article-html">{!! $article->content !!}</div>
           <a class="back-link" href="{{ route('blog.index') }}">← Lihat semua artikel</a>
         </div>
       </article>
