@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" rx="32" fill="url(#g)"/>
+  <rect x="90" y="90" width="620" height="320" rx="30" fill="rgba(8,15,30,0.25)" stroke="rgba(255,255,255,0.18)"/>
+  <path d="M180 310h440" stroke="#fff7ed" stroke-width="14" stroke-linecap="round" opacity="0.8"/>
+  <path d="M180 260h240" stroke="#fff7ed" stroke-width="14" stroke-linecap="round" opacity="0.8"/>
+  <path d="M180 210h340" stroke="#fff7ed" stroke-width="14" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="600" cy="200" r="72" fill="rgba(255,255,255,0.18)"/>
+  <path d="M600 143v114M543 200h114" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+  <text x="120" y="380" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" fill="#fff7ed">Performance</text>
+</svg>
